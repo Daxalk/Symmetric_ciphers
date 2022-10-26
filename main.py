@@ -29,6 +29,35 @@ def frequency(text):
     return message
 
 
+def vigenere(key, string):
+    encryption = []
+    key_enc = []
+    for symbol in string:
+        tmp1 = bin(ord(symbol) % 65536)[2::]
+        if len(tmp1) < 8:
+            encryption.append('0'*(8-len(tmp1)) + tmp1)
+        elif len(tmp1) == 8:
+            encryption.append(tmp1)
+        else:
+            return 0
+
+    for symbol in key:
+        tmp2 = bin(ord(symbol) % 65536)[2::]
+        if len(tmp2) < 8:
+            key_enc.append('0'*(8-len(tmp2)) + tmp2)
+        elif len(tmp2) == 8:
+            key_enc.append(tmp2)
+        else:
+            return 0
+
+    for i in range(len(encryption)):
+        encryption[i] = (encryption[i] and not key_enc[i]) or (not encryption[i] and key_enc[i])
+
+
+
+    print(encryption)
+
+
 def main():
     print("Добро пожаловать в программу!")
     while True:
@@ -58,16 +87,17 @@ def main():
                 text = input()
                 text = frequency(text)
                 print(f"Полученный текст: {text}")
+            elif command_main == 3:
+                print("Введите строку")
+                string = input()
+                vigenere('SYSTEM', string)
             elif command_main == 0:
                 print("Конец программы!")
                 break
-
         except ValueError:
             print("Некорректный ввод данных")
 
 
-
 main()
-
 # fsdl;f;kdsl lflsdlk lfslkdflsdflk vsvs fsf     fdsf fsd   fsd f  fdsfsfdsf    f   s   s
 # kxiq@k@pixq%qkqxiqp%qkxqpikqxikqp%{x{x%kxk%%%%%kixk%kxi%%%kxi%k%%kixkxkixk%%%%k%%%x%%%x
