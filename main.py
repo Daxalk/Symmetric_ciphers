@@ -13,7 +13,6 @@ def caesar(key, string, action):
         message += chr(number)
     return message
 
-
 def frequency(text):
     symbols_list = list(set(text))
     freq = {symbol: text.count(symbol) for symbol in symbols_list}
@@ -27,7 +26,6 @@ def frequency(text):
     key = abs(space_decrypt - space_encrypt)
     message = caesar(key, text, 'decrypt')
     return message
-
 
 def vigenere(key, string):
     encryption = []
@@ -55,7 +53,6 @@ def vigenere(key, string):
         print(number, chr(number))
     return message
 
-
 def xor(x1, x2):
     x = ''
     x1, x2 = "".join(x1), "".join(x2)
@@ -69,7 +66,6 @@ def xor(x1, x2):
             result.append(int(x, 2) % 65536)
             x = ''
     return result
-
 
 def main():
     print("Добро пожаловать в программу!")
@@ -124,6 +120,5 @@ def main():
         except ValueError:
             print("Некорректный ввод данных")
             pass
-
 
 main()
